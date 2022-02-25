@@ -5,6 +5,24 @@
   <title>Home | Top & Popular Anime</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css" type="text/css">
+  <script charset="utf-8">
+	function search_this(){
+	const pre_query = document.querySelector('#srchTxt').value
+	  if(pre_query.length == ''){
+		console.log(`Can't just search for nothing!`)
+	  } else {
+	    const query = pre_query.replace(/\s/g,'+')
+	    window.location.href = `/search?q=${query}`
+	  }
+	}
+
+      window.onload = function (){
+
+	      const get_search_inp = document.querySelector('input.srch-txt')
+	      get_search_inp.addEventListener('keypress', function(e){ if(e.key == 'Enter'){ search_this() }})
+      }	
+
+  </script>
 </head>
 <body>
   <header>
@@ -13,7 +31,7 @@
     </h1>
   <h1>
     <div>
-	<input type="text" class="srch-txt" placeholder="...Search">
+	<input type="text" class="srch-txt" id="srchTxt" placeholder="...Search">
 	<button class="srch-btn" onclick="search_this()">Go</button>
     </div>
   </h1>

@@ -7,6 +7,41 @@
   <title>
     <%= json_data[0].title %> 
   </title>
+  <script defer type="text/javascript" charset="utf-8">
+	function search_this(){
+	const pre_query = document.querySelector('#srchTxt').value
+	  if(pre_query.length == ''){
+		console.log(`Can't just search for nothing!`)
+	  } else {
+	    const query = pre_query.replace(/\s/g,'+')
+	    window.location.href = `/search?q=${query}`
+	  }
+	}
+
+      window.onload = function (){
+
+	      const get_search_inp = document.querySelector('input.srch-txt')
+	      get_search_inp.addEventListener('keypress', function(e){ if(e.key == 'Enter'){ search_this() }})
+
+	      const get_header = document.querySelector('header')
+
+	    let limitBottom = document.documentElement.offsetHeight - window.innerHeight;
+	    window.addEventListener("scroll",function(){
+	      get_header.style.transition = "ease-out 0.4s"
+	      get_header.style.display = "none"
+	      if(document.documentElement.scrollTop == 0){
+	      get_header.style.transition = "ease-in 0.4s"
+	      get_header.style.display = "inline-flex"
+	      }
+	      if(document.documentElement.scrollTop > 400 ){
+	      get_header.style.transition = "ease-out 0.3s"
+	      get_header.style.display = "inline-flex"
+	      }
+	    })
+
+      }	
+
+  </script>
 </head>
 <body>
   <header>
@@ -15,7 +50,7 @@
     </h1>
   <h1>
     <div>
-	<input type="text" class="srch-txt"
+	<input type="text" class="srch-txt" id="srchTxt"
 	placeholder="...Search">
 	<button class="srch-btn" onclick="search_this()">
 	  Go
@@ -47,7 +82,7 @@
 </span>
 
 <div class="video-container">
-  <iframe src="<%= json_data[0].iframeLink %>"  scrolling="no" frameborder="0" allowfullscreen="true" width="100%" class="videoo"></iframe>
+  <iframe id="iframe" src="<%= json_data[0].iframeLink %>"  scrolling="no" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowscreen="true" width="100%" class="videoo"></iframe>
 	       
 
 </div>

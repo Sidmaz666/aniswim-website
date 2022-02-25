@@ -14,12 +14,16 @@
       const next_btn = document.querySelector('.next-pg') 
       const prev_btn = document.querySelector('.prev-pg')
 
-      if(typeof page_no == 'undefined'){
-	  next_btn.dataset.page=1
-	} else {
-	    prev_btn.style.display = "flex"
-	    next_btn.dataset.page = page_no
-	  }
+      try{
+	    if(typeof page_no == 'undefined'){
+		next_btn.dataset.page=1
+	      } else {
+		  prev_btn.style.display = "flex"
+		  next_btn.dataset.page = page_no
+	      } 
+      } catch (error) {
+		console.log(error)
+	      }
 
 	  if(page_no == 1){
 	prev_btn.style.display = "none"
@@ -49,23 +53,8 @@
 
 	  }
 	
-	const srch_inp = document.querySelector('.srch-txt')
 	
-	function search_this(){
-	let pre_query = srch_inp.value
-	  if(pre_query.length == ''){
-		console.log(`Can't just search for nothing!`)
-	  } else {
-	    const query = pre_query.replace(/\s/g,'+')
-	    window.location.href = `/search?q=${query}`
-	  }
-	}
 
-      srch_inp.addEventListener('keypress', function(e){
-	if(e.key === 'Enter'){
-		search_this()
-	}
-      })
 	
 	if(window.location.pathname == '/latest'){
 	const top_or_latest =	document.querySelector('.latest-h1')
