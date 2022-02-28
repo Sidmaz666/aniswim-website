@@ -75,7 +75,7 @@
 	<span><span>Anime Status:</span> <%= json_data[0].anime_status %> 
 	</span>
 
-	<% const show_crrEp = /episode\-[0-9]/.exec(get_id).toString().replace('episode-','Episode ') %> 
+	<% const show_crrEp = /episode\-[^.]*/.exec(get_id).toString().replace('episode-','Episode ') %> 
 
 	<span><span>Current Episode:</span> <%= show_crrEp %></span>
 </div>
@@ -119,7 +119,7 @@
        const res_str = r.exec(str)[0]
        %>
 	
-       <a href="<%= get_id.replace(/episode\-[0-9]/,'') %><%= res_str.replace(/[0-9]/, x) %>">
+       <a href="<%= get_id.replace(/episode\-[^.]*/,'') %>episode-<%= x %>">
        <button>  <%= i  %> </button>
        </a>
 

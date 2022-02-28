@@ -5,7 +5,7 @@ const server = express()
 
 server.set('view engine', 'ejs')
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT 
 
 server.use(express.static('public'))
 
