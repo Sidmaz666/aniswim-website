@@ -5,7 +5,7 @@ const server = express()
 
 server.set('view engine', 'ejs')
 
-const port = process.env.PORT 
+const port = process.env.PORT || 3009 
 
 server.use(express.static('public'))
 
@@ -34,7 +34,8 @@ server.get('/search', (req,res) => {
 
 server.get('/view/:animeID', (req,res) => {
   get_id = req.params.animeID
-  func.render_vPage(res,get_id)
+  get_ep = req.query.ep || 1
+  func.render_vPage(res,get_id,get_ep)
 })
 server.use(function(req,res){
   	res.status(404).render('404')
