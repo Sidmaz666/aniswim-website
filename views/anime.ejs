@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/style.css" type="text/css">
+   
+<link href="https://unpkg.com/video.js@7/dist/video-js.min.css" rel="stylesheet">
+<link href="https://unpkg.com/silvermine-videojs-quality-selector@1.1.2/dist/css/quality-selector.css" rel="stylesheet">
+
+
+<script src="https://unpkg.com/video.js@7/dist/video.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-quality-levels/2.0.9/videojs-contrib-quality-levels.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/videojs-hls-quality-selector@1.1.1/dist/videojs-hls-quality-selector.min.js"></script>
+
   <title>
     <%= json_data.title %> 
   </title>
@@ -33,7 +42,7 @@
 	      get_header.style.transition = "ease-in 0.4s"
 	      get_header.style.display = "inline-flex"
 	      }
-	      if(document.documentElement.scrollTop > 400 ){
+	      if(document.documentElement.scrollTop > 450 ){
 	      get_header.style.transition = "ease-out 0.3s"
 	      get_header.style.display = "inline-flex"
 	      }
@@ -89,24 +98,53 @@
 </div>
 </span>
 
-<div class="video-container">
+<% if(json_data.video_links.main_link == undefined){ %>
+
+
+<div style="height:100vh; padding: 1.5rem;">
   <iframe id="iframe" src="<%= json_data.iframeLink %>"  scrolling="no" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowscreen="true" width="100%" class="videoo"></iframe>
 	       
 
 </div>
+
+<% } else { %>
+
+<div class="video-container">
+  <video id="videoplayer" class="video-js vjs-fluid vjs-theme-default vjs-big-play-centered" controls preload="auto" fluid="true" liveui="true"
+      data-setup='{“controls”: true, “autoplay”: false }'>
+    <source src="<%= json_data.video_links.main_link %>" type="application/x-mpegURL">
+      </video>
+</div>
+
+  <script defer>
+    var player = videojs('videoplayer',{
+    	responsive: true
+    });
+    player.hlsQualitySelector();
+    </script>
+
+    <% } %>
 
   <div class="video-con">
     <% const crr_Ep = json_data.requested_episode %>
     <% let nxPG = Number(crr_Ep) %>
     <% let pxPG = Number(crr_Ep) %>
 
+    <%  if(Number(pxPG) !== 1){ %>
+
     <a href="<%= get_id %>?ep=<%= pxPG - 1 %>">
     <button onclick="next_ep()"> Previous <%= pxPG - 1 %></button>
   </a>
-		
+	
+  <% } %>
+
+  <% if(Number(json_data.total_ep) !== Number(nxPG)) { %>
+
   <a href="<%= get_id %>?ep=<%= nxPG + 1 %>">
     <button onclick="previous_ep()">Next <%= nxPG + 1 %></button>
     </a> 
+    <% } %>
+
   </div>
 <br>
   </center> 
