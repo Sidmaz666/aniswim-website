@@ -66,7 +66,7 @@
 	}
 	
     if(window.location.pathname == "/search"){
-      document.querySelector('.srch-for').textContent = `Searched Results For ~ ${params.q.replace('+',' ')}`
+      document.querySelector('.srch-for').textContent = `Searched Results For ~ ${params.q.replaceAll('+',' ')}`
 		    window.document.title = "Searched-" + params.q.replace('+',' ')
     } else {
       document.querySelector('.srch-prompt').style.display = "none"

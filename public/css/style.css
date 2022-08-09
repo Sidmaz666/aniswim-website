@@ -183,8 +183,9 @@ h1 > div {
   color:#546E7A;
 }
 .video-container{
-  padding:1.5rem;
-  height:100vh;
+  padding:2.5rem;
+ /* height:100vh;
+  */
 }
 .videoo{
   height:100%;
