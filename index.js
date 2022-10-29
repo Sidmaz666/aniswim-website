@@ -45,4 +45,3 @@ server.listen(port, () => {
   console.log(`http://localhost:${port}`)
 } )
 
-module.export = server
