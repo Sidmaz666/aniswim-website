@@ -44,3 +44,5 @@ server.use(function(req,res){
 server.listen(port, () => {
   console.log(`http://localhost:${port}`)
 } )
+
+modules.export = server
