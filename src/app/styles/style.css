@@ -1,0 +1,369 @@
+@font-face {
+  font-family: 'Iosevka Term';
+  src: local('./fonts/iosevka.ttf'), url('./fonts/iosevka.ttf') format('ttf');
+}
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Iosevka Term";
+}
+body {
+  background-image: linear-gradient(to right, #131929, #1e1938);
+}
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #1a1a2b;
+  color: #ffffff;
+  padding: 0.5rem;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+header > h1 {
+  font-size: 1rem;
+}
+h1 > div {
+  display: flex;
+}
+.srch-txt {
+  background: #222236;
+  color: white;
+  font-weight: 700;
+  border: 0px;
+  padding-top: 0.3rem;
+  padding-left: 0.8rem;
+  width: 17rem;
+  height: 2rem;
+  font-size: 18px;
+  transition: ease-out 0.3s;
+  border-radius: 50px 0px 0px 50px;
+}
+.srch-txt::placeholder {
+  font-size: 1.2rem;
+}
+
+.srch-txt:focus,
+.srch-btn:hover,
+.next-pg:focus,
+.next-pg:hover,
+.prev-pg:focus,
+.prev-pg:hover {
+  font-weight: bold;
+  background: #383854;
+  outline: 0px;
+}
+
+.srch-btn {
+  background: #2b2b42;
+  color: #ffffff;
+  border: 0px;
+  width: 2rem;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  font-size: 17px;
+  cursor: pointer;
+  transition: ease-out 0.3s;
+  border-radius: 0px 50px 50px 0px;
+}
+.latest-h1 {
+  background: #272746;
+  border-radius: 8px;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+}
+.latest-h1:focus,
+.latest-h1:hover {
+  transition: ease-out 0.3s;
+  background: #aeea00;
+  color: #000000;
+  cursor: pointer;
+}
+.h-logo {
+  background: #2b2b42;
+  border-radius: 80%;
+  padding: 0.2rem;
+  transition: ease-out 0.3s;
+  font-size: 1.2rem;
+}
+.h-logo:focus,
+.h-logo:hover {
+  cursor: pointer;
+  background: #f50057;
+  color: #000000;
+}
+
+.contain-top-list {
+  transform: translateY(3.3rem);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+}
+
+.per-ani {
+  width: 400px;
+  height: 500px;
+  padding: 1rem;
+}
+.per-ani:hover,
+.per-ani:focus {
+  border-radius: 15px;
+  background: #130f2455;
+}
+
+.poster {
+  border-radius: 15px;
+  width: 300px;
+  height: 400px;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.next-pg,
+.prev-pg {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 0px 9px 0px 9px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border: 0px;
+  background: #2b2b42;
+  color: #bdbdbd;
+  cursor: pointer;
+  transition: ease-out 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.pg-opts {
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+.footer {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #bdbdbd;
+  background: #151129;
+  margin-top: 0.5rem;
+  padding-bottom: 2rem;
+}
+.cl {
+  font-size: 0.8rem;
+}
+.auth {
+  font-size: 1.3rem;
+}
+.srch-prompt {
+  padding: 1rem;
+  color: #9e9e9e;
+}
+.anime-details {
+  color: #bdbdbd;
+  font-size: 0.8rem;
+  display: flex;
+  text-align: initial;
+  flex-direction: column;
+  width: 100%;
+}
+.anime-title {
+  padding: 0.5rem;
+}
+.anime-details > div {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  padding-top: 0.8rem;
+  margin: 0.8rem 2rem 0.8rem 2rem;
+  background: #37474F80;
+  overflow-x:auto;
+  border-radius: 1rem;
+}
+
+
+.anime-details > div::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+.anime-details > div::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px #37474F;
+  border-radius: 20rem;
+}
+
+.anime-details > div::-webkit-scrollbar-thumb {
+  background-color: #90CAF990;
+  border-radius: 20rem;
+}
+
+.anime-details > div > span {
+  color: #bdbdbd80;
+}
+.anime-details > div > span > span {
+  font-size: 1.2rem;
+  color: #546e7a;
+}
+.video-container {
+  width: 100%;
+  padding: 2.5rem 9rem 2.5rem 9rem;
+}
+.ep-opts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-direction: row;
+  height: 150px;
+  overflow-y: auto;
+  margin: 0rem 2rem 2rem 2rem;
+}
+
+.ep-opts::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.ep-opts::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px #37474F;
+  border-radius: 20rem;
+}
+
+.ep-opts::-webkit-scrollbar-thumb {
+  background-color: #90CAF9;
+  border-radius: 20rem;
+}
+
+.ep-opts > button {
+  padding: 0.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0.5rem;
+  width: 3rem;
+  color: #bdbdbd;
+  border-radius: 30%;
+  border: 0px;
+  cursor: pointer;
+  transition: ease-out 0.4s;
+}
+
+.ep_btn{
+  background: #2b2b42;
+}
+
+.ep_btn:hover,
+.ep_btn:focus {
+  background: #383854;
+  font-weight: bold;
+}
+
+.active_ep{
+  background: #2196F390;
+  cursor: not-allowed;
+}
+
+.video-con {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.video-con > button {
+  padding: 0.5rem;
+  width: 5rem;
+  background: #2b2b42;
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 0px 10px 0px 10px;
+  cursor: pointer;
+  border: 0px;
+  margin:1rem;
+  margin-top: 0rem;
+  display: flex;
+  justify-content: center;
+}
+
+.video-con >  button:hover,
+.video-con >  button:focus {
+  background: #383854;
+}
+
+.search_ep {
+  display: flex;
+    width: 100%;
+    margin: 0rem 2.5rem 1rem 2.5rem;
+    align-items: center;
+    align-content: center;
+}
+.search_ep > label {
+      color: white;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+}
+
+.search_ep > input {
+  padding: 0.8rem;
+    background: #313d42;
+    border: none;
+    border-radius: 1rem;
+    padding-left: 0.5rem;
+    color: white;
+}
+
+.search_ep > input::placeholder {
+  color:#ffffff;
+}
+
+@media only screen and (max-width: 500px) {
+  header {
+    flex-direction: column;
+  }
+  .h-logo {
+    background: transparent;
+    margin-bottom: 0.5rem;
+  }
+  header > h1 > div {
+    margin-bottom: 0.5rem;
+  }
+  .latest-h1 {
+    width: 12rem;
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+  }
+  .srch-txt {
+    width: 10rem;
+    font-size: 0.8rem;
+  }
+  .contain-top-list {
+    transform: translateY(9rem);
+    overflow: hidden;
+  }
+  .title {
+    font-size: 0.8rem;
+  }
+  .next-pg,
+  .prev-pg {
+    font-size: 1rem;
+  }
+  .video-container{
+    padding: 1rem 0rem 1rem 0rem;
+  }
+}
