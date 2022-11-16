@@ -305,11 +305,11 @@ h1 > div {
 
 .search_ep {
   display: flex;
+  flex-direction: row;  
   width: 100%;
   margin: 0rem 2.5rem 1rem 2.5rem;
   align-items: center;
   align-content: center;
-  overflow-x: auto;
 }
 .search_ep > label {
   color: white;
@@ -378,4 +378,18 @@ h1 > div {
   .video-container {
     padding: 1rem 0rem 1rem 0rem;
   }
+}
+
+@media only screen and (max-width: 415px) {
+.search_ep {
+flex-direction: column;  
+}
+.search_ep > label {
+margin-bottom: 1rem;
+}
+
+.search_ep > .downlaodBtn {
+  margin-top: 1.5rem;
+}
+
 }

@@ -142,8 +142,8 @@ export default function View() {
                   }}
                 />
 
-                <div class="downlaodBtn">
-                  <a href={isJson ? isJson.video_links.main_link : ""} download>
+                <div className="downlaodBtn">
+                  <a href={isJson ? isJson.video_links.main_link : ""} download alt="Download" title={`Download ${isJson.title} Episode ${isJson.requested_episode}`}>
                     <FaDownload />
                   </a>
                 </div>
