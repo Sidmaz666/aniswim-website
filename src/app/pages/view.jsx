@@ -85,9 +85,9 @@ export default function View() {
           ) : (
             <>
               <Video
-                title={isJson ? isJson.title : ""}
+		title={isJson ? isJson.title.length <= 0 ? isJson.animeID.replaceAll("-"," ") : isJson.title : "" }
                 ep={isJson ? isJson.requested_episode : ""}
-                link={isJson ? isJson.video_links.main_link : ""}
+                link={isJson ? isJson.video_links[0].main_link : ""}
               />
 
               <div className="video-con">

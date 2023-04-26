@@ -62,7 +62,7 @@ export default function Search(){
                   <Card
 	      	    key={data.animeId+data.thumbnail}
                     animeId={data.animeID}
-                    title={data.title}
+		    title={data.title.length <= 0 ? data.animeID.replaceAll("-"," ") : data.title }
                     poster={data.thumbnail}
                   />
                 );
