@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (min-width: 720px){
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(oklch(var(--b3)));
+    border-radius: var(--rounded-btn);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(var(--n));
+    border-radius: var(--rounded-box);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(var(--nc));
+  }
+}
+
+/* Loader Animation */
+
+#water #waveShape {
+  animation-name: waveAction01;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 2s;
+}
+
+@keyframes waveAction01 {
+  0% {
+    transform: translate(300px, -1830px);
+  }
+  100% {
+    transform: translate(102px, -1830px);
+  }
+}
+
+.plyr__poster{
+      background-size: cover !important;
+      filter: blur(5px) !important;
+}
+
+.plyr__video-wrapper{
+  border-top-right-radius: var(--rounded-box) !important;
+  border-top-left-radius: var(--rounded-box) !important;
+}
+
+.plyr--full-ui{
+  border-top-right-radius: var(--rounded-box) !important;
+  border-top-left-radius: var(--rounded-box) !important;
+}
