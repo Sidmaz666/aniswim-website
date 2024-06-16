@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
   			name="twitter:image:alt" 
   			content="Aniswim ~ Watch & Download Anime Unlimited"/>
      </head>
-    <body className={`${notoSansJP.className} ${notoSans.className}`}>
+    <body className={`${notoSans.className}`}>
   	<ThemeProvider
 	  themes={[
 	    "light",
