@@ -1,12 +1,11 @@
-import { Noto_Sans_JP, Noto_Sans } from "next/font/google";
+import { Noto_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/global/theme-provider";
 import NextTopLoader from 'nextjs-toploader';
 import Navbar from "@/components/global/navbar";
 
 
-const notoSansJP = Noto_Sans_JP({ subsets: ['latin'] , preload: false });
-const notoSans = Noto_Sans({ subsets: ['latin', 'vietnamese', 'cyrillic'] , preload: false  });
+const notoSans = Noto_Sans({ subsets: ['latin'] });
 
 export const metadata = {
   title: "Aniswim ~ Watch & Download Anime Unlimited",
