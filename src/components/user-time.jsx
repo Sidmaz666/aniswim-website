@@ -7,16 +7,16 @@ export default function UserTime({time,className}) {
 
   useEffect(() => {
     const convertToClientTime = () => {
-      const utcTime = new Date(`2000-01-01T${time}:00Z`);
-      const localTime = utcTime.toLocaleTimeString('en-US', 
-	{ 
-	  timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-	  hour12: true,
-          hour: '2-digit',
-          minute: '2-digit'
-	}
-      );
-      setLocalTime(localTime);
+    const [hours, minutes] = time.split(':').map(Number);
+    const now = new Date();
+    const utcDate = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), hours, minutes));
+    const options = {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+    };
+    const localTime = utcDate.toLocaleString('en-US', options);
+    setLocalTime(localTime);
     };
 
     convertToClientTime();

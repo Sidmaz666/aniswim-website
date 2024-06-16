@@ -1,0 +1,13 @@
+<svg width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="looka-1j8o68f">
+    <defs id="SvgjsDefs1152" />
+    <g id="SvgjsG1153" featurekey="UFHKJ9-0" transform="matrix(2.87828947368421,0,0,2.87828947368421,0,0)">
+        <g style="fill: red">
+            <polygon points="32,15.976 15.976,32 0,16.024" />
+            <polygon points="23.347,15.989 15.989,23.347 8.653,16.011" />
+            <polygon points="0,16.024 16.024,0 32,15.976" />
+            <polygon points="8.653,16.011 16.011,8.653 23.347,15.989" />
+        </g>
+        <!-- Other path elements omitted for brevity -->
+        <path d="M0,16.024L15.976,32L32,15.976L16.024,0L0,16.024z M15.989,23.347l-7.336-7.336l14.694-0.022L15.989,23.347z" style="fill:yellow" />
+    </g>
+</svg>

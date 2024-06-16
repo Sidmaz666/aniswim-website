@@ -5,6 +5,7 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import Image from 'next/image';
+import Link from "next/link"
 
 export default function Carousel({data}) {
   const [emblaRef, emblaApi] = useEmblaCarousel({loop:true},[Autoplay()]);
@@ -63,18 +64,20 @@ export default function Carousel({data}) {
 	    <div className="overflow-hidden w-full relative" ref={emblaRef}>
 	      <div className="flex w-full">
     		{
-		  data.map((a) => {
+		  data.map((a, i) => {
 		     return(
-		      <div className="min-w-full h-[200px] md:h-[400px] overflow-hidden
-			rounded-box flex items-start mx-4 cursor-pointer 
-		         glass bg-primary/10"
-			key={a?.animeID}
+		      <Link 
+           href={`watch/${a?.animeID}`} 
+           className="min-w-full h-[200px] md:h-[400px] 
+           overflow-hidden rounded-box flex items-start mx-4 cursor-pointer 
+		       glass bg-primary/10"
+			     key={a?.animeID + i}
 		       >
 		       	<div className='w-full h-full flex justify-center items-center md:pl-8 px-4 py-2 brightness-200'>
 		       		<div className='flex flex-col space-y-2'>
 				  <span className='md:text-lg text-sm font-semibold'>{a?.title}</span>
 				  <span className='text-sm line-clamp-1'>
-		       		   {a?.genre.replaceAll(",",", ")}
+		       		   {a?.genre?.replaceAll(",",", ")}
 		       		   </span>
 				  <span className='line-clamp-2 text-xs md:text-md'>{a?.description}</span>
 				  <span className='text-xs md:text-md'>{a?.anime_type}</span>
@@ -90,7 +93,7 @@ export default function Carousel({data}) {
 		       		loading = 'lazy'
 		       		unoptimized
 		       />
-			</div>
+			</Link>
 		     )
 		  })
 		}

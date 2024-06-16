@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
 @media (min-width: 720px){
   ::-webkit-scrollbar {
     width: 5px;
@@ -16,6 +20,17 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     background: oklch(var(--nc));
+  }
+  .plyr--full-ui {
+    height: inherit !important;
+  }
+}
+
+@media (max-width: 720px){
+  [data-plyr=volume] {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
   }
 }
 

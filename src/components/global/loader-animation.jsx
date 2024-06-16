@@ -1,6 +1,8 @@
 import * as React from "react";
 
-export default function LoaderAnimation(){
+export default React.memo(LoaderAnimation)
+
+function LoaderAnimation(){
   return(
     <svg
       xmlns="http://www.w3.org/2000/svg"

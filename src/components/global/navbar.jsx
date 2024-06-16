@@ -1,7 +1,7 @@
 "use client"
 
 import {FaPalette, FaSearch, FaHome, FaFire, FaMountain} from "react-icons/fa"
-import { useState, useEffect } from "react"
+import { useState, useEffect, memo} from "react"
 import { FaBarsStaggered, FaXmark} from "react-icons/fa6";
 import { useTheme } from "next-themes";
 import axiosRetry from "../utils/fetch-data-retry";
@@ -9,8 +9,19 @@ import useSWR from "swr";
 import Link from "next/link";
 import Logo from "./logo";
 
-export default function Navbar({children}){
+function TopNavbar({children}){
   const [isSidebar,setSidebar] = useState(true)
+  useEffect(() => {
+  	if(localStorage.getItem("is-sidebar") == null){
+  	    localStorage.setItem("is-sidebar", true)
+  	  } else {
+  	  	setSidebar(
+  	  		strToBool(
+						localStorage.getItem("is-sidebar")
+  	  			)
+  	  		)
+  	  }
+  },[])
   return(
     <main className="flex flex-col h-screen w-screen overflow-hidden">
       <Header setSidebar={setSidebar} />
@@ -32,6 +43,7 @@ export default function Navbar({children}){
 function Header({setSidebar}){
   const toggleSidebar = () => {
     setSidebar(prevSidebar => !prevSidebar);
+    localStorage.setItem("is-sidebar", !strToBool(localStorage.getItem("is-sidebar")) )
   };
   return(
     <header className="flex justify-between items-center p-2 bg-base-100">
@@ -40,7 +52,7 @@ function Header({setSidebar}){
 		  onClick={toggleSidebar}>
 		  <FaBarsStaggered/>
 		</button>
-    		<Link href={"/"}>
+    		<Link scroll={false}  href={"/"}>
 		  <Logo className="h-[1.8rem]"/>
     		</Link>
     	  </div>
@@ -80,45 +92,45 @@ function SidebarList(){
 	return(
 	  <ul className="h-screen md:h-full overflow-auto flex flex-col md:pb-20 md:pt-0 pt-10">
 	    <li className="w-full flex md:border-b-2 border-base-200">
-	    <Link href={"/popular"}
+	    <Link scroll={false}  href={"/popular"}
 	      className="px-6 py-4 text-start w-full btn-ghost hover:bg-primary hover:text-primary-content">
 	  	Most Popular
 	      </Link>
 	    </li>
 	    <li className="w-full flex md:border-b-2 border-base-200">
-	    <Link href={"/new"}
+	    <Link scroll={false}  href={"/new"}
 	      className="px-6 py-4 text-start w-full btn-ghost hover:bg-primary hover:text-primary-content">
 	  	New Season
 	      </Link>
 	    </li>
 	    <li className="w-full flex md:border-b-2 border-base-200">
-	    <Link href={"/recent"}
+	    <Link scroll={false}  href={"/recent"}
 	      className="px-6 py-4 text-start w-full btn-ghost hover:bg-primary hover:text-primary-content">
 	  	Recent Releases
 	      </Link>
 	    </li>
 	    <li className="w-full flex md:border-b-2 border-base-200">
-	    <Link href={"/list"}
+	    <Link scroll={false}  href={"/list"}
 	      className="px-6 py-4 text-start w-full btn-ghost hover:bg-primary hover:text-primary-content">
 	  	Anime List
 	      </Link>
 	    </li>
 	    <li className="w-full flex md:border-b-2 border-base-200">
-	    <Link href={"/movies"}
+	    <Link scroll={false}  href={"/movies"}
 	      className="px-6 py-4 text-start w-full btn-ghost hover:bg-primary hover:text-primary-content">
 	  	Movies
 	      </Link>
 	    </li>
 	    <li className="w-full flex md:border-b-2 border-base-200">
-	    <Link href={"/dub"}
+	    <Link scroll={false}  href={"/dub"}
 	      className="px-6 py-4 text-start w-full btn-ghost hover:bg-primary hover:text-primary-content">
 	  	Dub
 	      </Link>
 	    </li>
 	    <li className="w-full flex md:border-b-2 border-base-200">
-	    <Link href={""}
+	    <Link scroll={false}  href={"/schedule"}
 	      className="px-6 py-4 text-start w-full btn-ghost hover:bg-primary hover:text-primary-content">
-		Schedule
+				Schedule
 	      </Link>
 	    </li>
 	    <li className="w-full flex">
@@ -244,7 +256,7 @@ function Search(){
 		{!isLoading && isAnime && isAnime.length > 0 && isAnime[0].title !== undefined ? (
 		  isAnime.filter((x) => { return x.title !== undefined }).map((a,i) => (
 		    <li key={`${a.animeID}-${i}`}>
-		      <Link href={`/watch/${a.animeID}`} className="flex border-b-4 border-base-100">
+		      <Link scroll={false}  href={`/watch/${a.animeID}`} className="flex border-b-4 border-base-100">
 			<img src={a.thumbnail} width={100} height={100} alt={a.title} />
 			<span className="p-4">{a.title}</span>
 		      </Link>
@@ -326,7 +338,7 @@ function SearchMobile() {
             {!isLoading && isAnime && isAnime.length > 0 && isAnime[0].title !== undefined ? (
 	      <>
 	      {isAnime.filter((x) => { return x.title !== undefined }).map((a,i) => (
-                <Link href={`/watch/${a.animeID}`}
+                <Link scroll={false}  href={`/watch/${a.animeID}`}
 		  key={a.animeID + "-" + i} className="flex border-b-4 border-base-200/30">
                   <img src={a.thumbnail} width={100} height={100} alt={a.title} />
                   <span className="p-4">{a.title}</span>
@@ -499,7 +511,7 @@ function GenreList() {
     <div className="grid grid-cols-2 w-full gap-2 md:gap-2 capitalize break-words">
       {genreData.map((g) => {
         return (
-          <Link
+          <Link scroll={false} 
 	  onClick={() => {
 	    document.querySelector("#render-pages").scroll(0,0)
 	  }}
@@ -664,3 +676,11 @@ const FilterRadio = ({topic,value,isParam,setParam}) => {
     </div>
   )
 }
+
+
+function strToBool(s) {
+    return s.toLowerCase() === "true";
+}
+
+const Navbar = memo(TopNavbar) 
+export default Navbar

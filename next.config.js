@@ -7,6 +7,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'gogocdn.net',
       },
+      {
+        protocol: 'https',
+        hostname: "subsplease.org",
+      },
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+      },
     ],
   },
 }

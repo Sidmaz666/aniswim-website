@@ -21,15 +21,16 @@ export default function SectionCard({data, className, figClass, imageClass}){
 	})
       }
       if(data && data.animeID){
-	reqImage(data?.animeID)
+				reqImage(data?.animeID)
       }
-    } 
+    }
+
   },[])
 
 
 
   return(
-	    <Link 
+	    <Link scroll={false}  
     	    href={`/watch/${data?.animeID?.split("-episode-")[0]}?ep=${data?.animeID?.split("-episode-")[1] || 1}`}
 	    className={`
 	    md:[flex:0_0_300px] [flex:0_0_200px]
@@ -48,7 +49,7 @@ export default function SectionCard({data, className, figClass, imageClass}){
 		       width={200}
 		       height={200}
 		       className={`w-full h-[200px] md:h-[300px] rounded-t-box ${imageClass}`}
-		       alt={data?.title}
+		       alt={data?.title || data?.animeID}
 		       loading='lazy'
 		       unoptimized
 		       />
