@@ -39,7 +39,7 @@ function DetailsBox({data, relatable, isScheduled}) {
             </div>
         </div>
     </div>
-    <div className="p-6 pt-3 mx-auto max-w-full mb-20">
+    <div className="p-6 pt-3 mx-auto max-w-full mb-32 md:mb-20">
     {
     	relatable && relatable.shift() && relatable.length > 0 && (
          <CarouselSection 

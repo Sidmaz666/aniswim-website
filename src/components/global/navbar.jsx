@@ -171,9 +171,21 @@ function BottomList(){
 	return(
 	  <>
 	    <ul className="flex w-full justify-evenly items-center py-2">
-	      <li><FaHome/></li>
-	      <li><FaFire/></li>
-	      <li><FaMountain/></li>
+	      <li> 
+			<Link scroll={false}  href={"/"}>
+		  	<FaHome/>
+		  	</Link>
+		  </li>
+	      <li>
+		  	<Link scroll={false}  href={"/popular"}>
+			<FaFire/>
+			</Link>
+		  </li>
+	      <li>
+		  <Link scroll={false}  href={"/recent"}>
+			<FaMountain/>
+			</Link>
+		  </li>
 	      <li>
 		<button
 	  	className=""
@@ -299,7 +311,10 @@ function SearchMobile() {
     <div className="md:hidden">
       <button
         className="btn bg-transparent hover:bg-transparent border-0"
-        onClick={() => document.getElementById('trigger_search_mobile').showModal()}
+        onClick={() => {
+			document.getElementById('trigger_search_mobile').showModal();
+			document.getElementById('mobile-search-input').focus();
+		}}
       >
         <FaSearch />
       </button>
@@ -307,6 +322,7 @@ function SearchMobile() {
         <div className="bg-base-100 w-full h-screen">
           <div className="flex w-full">
             <input
+			  id="mobile-search-input"
               type="text"
               onChange={(e) => setQuery(e.target.value)}
               className="input input-md border-0 rounded-none w-full hover:border-0 hover:rounded-none focus:outline-0"
@@ -316,7 +332,6 @@ function SearchMobile() {
 		    document.querySelector("#show-more-search-mobile").click()
 		  }
 		}}
-              autoFocus
               value={isQuery}
             />
             <form method="dialog">
