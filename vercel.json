@@ -6,32 +6,23 @@
         "use": "@vercel/next"
       }
     ],
-    "routes": [
-        {
-          "src": "/filter",
-          "dest": "/filter",
-          "maxDuration": 60
-        },
-        {
-          "src": "/genre/(.*)",
-          "dest": "/genre/$1",
-          "maxDuration": 60
-        },
-        {
-          "src": "/list/(.*)",
-          "dest": "/list/$1",
-          "maxDuration": 60
-        },
-        {
-          "src": "/search",
-          "dest": "/search",
-          "maxDuration": 60
-        },
-        {
-          "src": "/watch/(.*)",
-          "dest": "/watch/$1",
-          "maxDuration": 60
-        }
-      ]
+    "functions": {
+      "filter": {
+        "maxDuration": 0
+      },
+      "genre/[genre]": {
+        "maxDuration": 0
+      },
+      "list/[list_option]": {
+        "maxDuration": 0
+
+      },
+      "search": {
+        "maxDuration": 60
+      },
+      "watch/[anime_id]": {
+        "maxDuration": 60
+      }
+    }
   }
   
