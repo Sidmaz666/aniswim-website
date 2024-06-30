@@ -70,7 +70,7 @@ export default function InfiniteScrollBox({url, urlParam , isPage, skelLen}) {
   const allData = data.reduce((acc, curr) => acc.concat(curr), []);
 
   return (
-    <div className='grid gap-4 md:grid-cols-[repeat(auto-fill,300px)] justify-center pb-20 w-full'>
+    <div className='grid gap-4 md:grid-cols-[repeat(auto-fill,300px)] justify-center md:pb-20 pb-32 w-full'>
       {allData.map((item) => (
 	item.animeID !== undefined ?
         <SectionCard key={item.animeID}

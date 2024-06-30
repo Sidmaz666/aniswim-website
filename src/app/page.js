@@ -47,7 +47,7 @@ export default async function Home() {
       	<CarouselSection pageLink={"/dub"} data={recentDub} heading={"Recently Dubbed"} className=""/>
       	<TodaySchedule className=""/>
         <ListOption className={"pb-2 mb-6"}/>
-        <footer className="footer footer-center flex items-end justify-center p-10 mb-24">
+        <footer className="footer footer-center flex items-end justify-center p-10 md:mb-24 mb-40">
         <aside className="flex items-end justify-center">
           <a href="https://github.com/Sidmaz666" target="_blank"
            className="flex items-center space-x-2">
