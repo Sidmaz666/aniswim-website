@@ -4,7 +4,7 @@ export default function Loader(){
     return(
       <div className="z-[100] absolute top-0 left-0 w-screen h-screen flex justify-center items-center bg-base-100">
       <div className="relative flex justify-center items-center">
-        <span className="bg-gradient-to-r from-primary to-secondary inline-block text-transparent bg-clip-text md:hidden">
+        <span className="font-mono tracking-wide text-md animate-pulse md:hidden">
           Loading...
         </span>
       	<LoaderAnimation/>
