@@ -8,13 +8,13 @@
     ],
     "functions": {
       "filter": {
-        "maxDuration": 0
+        "maxDuration": 60
       },
       "genre/[genre]": {
-        "maxDuration": 0
+        "maxDuration": 60
       },
       "list/[list_option]": {
-        "maxDuration": 0
+        "maxDuration": 60
 
       },
       "search": {
