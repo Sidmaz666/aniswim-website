@@ -13,6 +13,8 @@ const VideoPlayer = dynamic(
   { ssr: false }
 )
 
+export const maxDuration = 60;
+
 const removeObjectWithKey = (arr, key) => arr.filter(obj => !obj.hasOwnProperty(key));
 function getShowDetails(scheduleData,searchTerm) {
   const patternsToRemove = [/season\s*\d+/i, /s\d+/i, /part\s*\d+/i, /ep\s*-\s*\d+/i, /ep\s*\d+/i]; 
