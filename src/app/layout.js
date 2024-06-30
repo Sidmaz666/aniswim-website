@@ -25,12 +25,13 @@ export default function RootLayout({ children }) {
   			content="website"/>
   		<meta 
   			property="og:image" 
-  			content="./preview.png"/>
+  			content="https://aniswim.vercel.app/preview.png"/>
   		<meta 
   			property="og:url" 
   			content="https://aniswim.vercel.app/"/>
+		<meta property="twitter:card" content="Aniswim ~ Watch & Download Anime Unlimited" />
   		<meta 
-  			name="twitter:card" 
+  			name="twitter:image" 
   			content="https://aniswim.vercel.app/preview.png"/>
   		<meta 
   			name="keywords" 
@@ -48,7 +49,7 @@ export default function RootLayout({ children }) {
   			name="twitter:image:alt" 
   			content="Aniswim ~ Watch & Download Anime Unlimited"/>
      </head>
-    <body className={`${notoSansJP.className} ${notoSans.className}`}>
+    <body className={`${notoSansJP.className} ${notoSans.className} overflow-hidden`}>
   	<ThemeProvider
 	  themes={[
 	    "light",

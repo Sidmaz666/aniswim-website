@@ -8,7 +8,6 @@ import ListOption from "@/components/list-option";
 import axiosRetry from "@/components/utils/fetch-data-retry";
 import { FaGithub } from "react-icons/fa";
 
-
 export default async function Home() {
   try {
     const initialData = await axiosRetry('https://aniswim-api-v2.vercel.app/')

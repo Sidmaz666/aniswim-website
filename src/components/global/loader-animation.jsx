@@ -7,10 +7,8 @@ function LoaderAnimation(){
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      width={211}
-      height={211}
-      viewBox="0 0 211 211"
-      className="mask mask-diamond relative"
+      viewBox="0 0 125 211"
+      className="mask mask-diamond relative w-[125px] h-[211px]"
     >
       <defs>
 	<clipPath id="clip-path">
