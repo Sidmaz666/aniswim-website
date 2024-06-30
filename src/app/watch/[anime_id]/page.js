@@ -14,6 +14,8 @@ const VideoPlayer = dynamic(
 )
 
 export const maxDuration = 60;
+export const dynamic = 'force-dynamic';
+
 
 const removeObjectWithKey = (arr, key) => arr.filter(obj => !obj.hasOwnProperty(key));
 function getShowDetails(scheduleData,searchTerm) {

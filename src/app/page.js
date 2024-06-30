@@ -9,6 +9,7 @@ import axiosRetry from "@/components/utils/fetch-data-retry";
 import { FaGithub } from "react-icons/fa";
 
 export const maxDuration = 60;
+export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   try {
