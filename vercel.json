@@ -1,0 +1,37 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/next"
+      }
+    ],
+    "routes": [
+        {
+          "src": "/filter",
+          "dest": "/filter",
+          "maxDuration": 60
+        },
+        {
+          "src": "/genre/(.*)",
+          "dest": "/genre/$1",
+          "maxDuration": 60
+        },
+        {
+          "src": "/list/(.*)",
+          "dest": "/list/$1",
+          "maxDuration": 60
+        },
+        {
+          "src": "/search",
+          "dest": "/search",
+          "maxDuration": 60
+        },
+        {
+          "src": "/watch/(.*)",
+          "dest": "/watch/$1",
+          "maxDuration": 60
+        }
+      ]
+  }
+  
