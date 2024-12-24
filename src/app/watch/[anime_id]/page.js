@@ -4,7 +4,7 @@ import Link from "next/link"
 import PlayerPage from "@/components/player-container";
 import axiosRetry from "@/components/utils/fetch-data-retry";
 import Container from "@/components/global/page-container";
-import { Suspense } from "react";
+
 
 
 const removeObjectWithKey = (arr, key) => arr.filter(obj => !obj.hasOwnProperty(key));
@@ -54,7 +54,6 @@ export default async function({params,searchParams}){
     const isScheduled = getShowDetails(schedule,anime_id.replaceAll("_"," "))
 
     return (
-      <Suspense>
       <Container className="md:pt-8">
         <PlayerPage 
           links={links} 
@@ -63,7 +62,6 @@ export default async function({params,searchParams}){
           isScheduled={isScheduled}
           />
       </Container>
-      </Suspense>
     );
   } catch (error) {
     console.error('Error fetching data:', error);

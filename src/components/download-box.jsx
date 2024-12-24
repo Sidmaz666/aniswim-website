@@ -252,7 +252,7 @@ export default function DownloadBox({total_ep}){
 
  	<select onChange={(e) => { setQuality(e.target.value) }} 
  	className="select select-bordered select-sm w-full max-w-xs ml-2">
-  	<option disabled selected>Quality</option>
+  	<option disabled defaultValue={qualityOrder[0]}>Quality</option>
 		{
 			qualityOrder.map((e) => {
 				 return <option key={e}>{e}</option>
