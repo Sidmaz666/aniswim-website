@@ -23,7 +23,7 @@ function TopNavbar({children}){
   	  }
   },[])
   return(
-    <main className="flex flex-col h-screen w-screen overflow-hidden">
+    <main className="flex flex-col h-[100dvh] w-screen overflow-hidden">
       <Header setSidebar={setSidebar} />
     	<PageLayout>
 	  <Sidebar isSidebar={isSidebar}>
@@ -46,7 +46,7 @@ function Header({setSidebar}){
     localStorage.setItem("is-sidebar", !strToBool(localStorage.getItem("is-sidebar")) )
   };
   return(
-    <header className="flex justify-between items-center p-2 bg-base-100">
+    <header className="flex justify-between items-center p-2 bg-base-100 sticky top-0 left-0 z-50">
 	  <div className="flex space-x-3 items-center">
 		<button className="btn btn-ghost hidden md:block text-xl"
 		  onClick={toggleSidebar}>

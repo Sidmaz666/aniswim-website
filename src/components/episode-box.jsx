@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useSearchParams } from 'next/navigation'
 import {FaSearch} from "react-icons/fa"
-import useCollapseNumber from "./utils/collapse-number"
+import useCollapseNumber, {findIndexForNumber} from "./utils/collapse-number"
 import { FaArrowDown, FaArrowUp } from "react-icons/fa6"
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md"
 import { FaDownload } from "react-icons/fa";
@@ -41,6 +41,7 @@ function EpisodeBoxComponent({total_ep,fillers_ep}){
         }
 	},[])
 
+
 	useEffect(() => {
 		if(!isNaN(Number(isSearch)) &&
 		 Number(isSearch) > 0 &&
@@ -70,6 +71,15 @@ function EpisodeBoxComponent({total_ep,fillers_ep}){
       setAutoplay(savedAutoplay === 'true');
     }
   }, []);
+
+  useEffect(() => {
+	if(epData && epData?.collapsed_nums_array && epData?.collapsed_nums_array.length > 0){
+		const index = findIndexForNumber(Number(current_ep), total_ep, 100)
+		setCurrentArray(
+			epData?.collapsed_nums_array[index]
+		)
+	}
+  },[total_ep, current_ep, epData])
 
   const handleAutoplayToggle = () => {
     const newAutoplay = !isAutoplay;
@@ -157,8 +167,9 @@ function EpisodeBoxComponent({total_ep,fillers_ep}){
 		{
 				epData?.short_form?.map((m) => {
 					return <button
-					className="m-2 px-2 p-1 bg-base-200 text-primary/50
-					 link link-hover link-primary rounded-box"
+					className={`m-2 px-2 p-1 bg-base-200
+				     text-primary/50
+					 link link-hover link-primary rounded-box`}
 					onClick={() => {
 						setCurrentArray(
 							epData?.collapsed_nums_array[Number(m.split('-index:')[1])]
@@ -188,7 +199,11 @@ function EpisodeBoxComponent({total_ep,fillers_ep}){
 			${
 			fillers_ep.includes(String(a)) ? 'border-warning' : null
 			}
+			${
+				current_ep == a ? 'bg-primary/20' : ''
+			}
 			`}
+			
 		      key={`${a}-ep-btn`}>
 		      	<span>
 		      	{a}

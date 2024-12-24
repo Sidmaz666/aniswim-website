@@ -28,4 +28,13 @@ const useCollapseNumber = (start,end, step=100) => {
     }
 }
 
+export function findIndexForNumber(number, total, gap) {
+    if(!number || !total || !gap) return -1
+    if (number < 1 || number > total) {
+        throw new Error("Number must be within the range of 1 and total.");
+    }
+    return Math.floor((number - 1) / gap);
+}
+  
+
 export default useCollapseNumber

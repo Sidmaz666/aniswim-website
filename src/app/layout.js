@@ -13,6 +13,8 @@ export const metadata = {
   description: "Aniswim offers free unlimited anime streaming and downloading services, all the data provided here are out sourced from a third-party.",
 };
 
+export const revalidate = 1800;
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>

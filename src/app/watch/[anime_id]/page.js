@@ -1,17 +1,11 @@
 "use server"
 
-import dynamic from 'next/dynamic'
-
-import Container from "@/components/global/page-container"
-import axiosRetry from "@/components/utils/fetch-data-retry"
-import EpisodeBox from '@/components/episode-box'
-import DetailsBox from '@/components/details-box'
 import Link from "next/link"
+import PlayerPage from "@/components/player-container";
+import axiosRetry from "@/components/utils/fetch-data-retry";
+import Container from "@/components/global/page-container";
+import { Suspense } from "react";
 
-const VideoPlayer = dynamic(
-  () => import('@/components/video-player'),
-  { ssr: false }
-)
 
 const removeObjectWithKey = (arr, key) => arr.filter(obj => !obj.hasOwnProperty(key));
 function getShowDetails(scheduleData,searchTerm) {
@@ -36,7 +30,7 @@ function getShowDetails(scheduleData,searchTerm) {
 
 export async function generateMetadata({ params, searchParams }, parent) {
   const ep=searchParams?.ep || 1
-  const {anime_id} = params
+  const {anime_id} = await params
   return {
     title: `Watch ${anime_id.replace("-", " ").replace(/\b\w/g, c => c.toUpperCase())} Episode ${ep}`,
   }
@@ -60,11 +54,16 @@ export default async function({params,searchParams}){
     const isScheduled = getShowDetails(schedule,anime_id.replaceAll("_"," "))
 
     return (
-      <Container>
-	     <VideoPlayer url={links.video_links[0].main_link} poster={details.thumb}/>
-       <EpisodeBox total_ep={details.total_ep} fillers_ep={details.fillers_ep}/>
-       <DetailsBox data={details} relatable={relatable_anime} isScheduled={isScheduled} />
+      <Suspense>
+      <Container className="md:pt-8">
+        <PlayerPage 
+          links={links} 
+          details={details} 
+          relatable_anime={relatable_anime} 
+          isScheduled={isScheduled}
+          />
       </Container>
+      </Suspense>
     );
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -97,3 +96,5 @@ export default async function({params,searchParams}){
     );
   }
 }
+
+
